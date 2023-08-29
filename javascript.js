@@ -15,13 +15,13 @@ function getComputerChoice(){
             return "Scissors"
     }
 }
-const computerChoice = getComputerChoice()
-const playerChoice = "rock"
+let computerChoice = getComputerChoice()
+let playerChoice = "rock"
 /* console.log("Computer threw " + computerChoice) */
 
 function playRound(x, y){
-    console.log("You threw " + x)
-    console.log("Computer threw " + y)
+    /*console.log("You threw " + x)
+    console.log("Computer threw " + y)*/
     if(x == y){
         return "Draw"
     } else if ((x == "rock" && y == "scissors") || (x == "paper" && y == "rock") || (x == "scissors" && y == "paper")){
@@ -30,4 +30,20 @@ function playRound(x, y){
         return "You lose"
     }
 }
-console.log(playRound(playerChoice.toLowerCase(),computerChoice.toLowerCase()))
+
+function game(){
+    for(let i = 1; i <= 5; i ++){
+        let z = 1
+        do {
+            if(z > 1){
+                playerChoice = prompt("Error: Please type either rock, paper, or scissors")
+            } else {
+                playerChoice = prompt("Rock Paper Scissors")
+            }
+            z++
+        }while (playerChoice.toLowerCase() != "rock" && playerChoice.toLowerCase() != "paper" && playerChoice.toLowerCase() != "scissors")
+        computerChoice = getComputerChoice()
+        console.log(playRound(playerChoice.toLowerCase(), computerChoice.toLowerCase()))
+    }
+}
+game()
