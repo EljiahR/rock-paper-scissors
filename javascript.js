@@ -15,12 +15,11 @@ function getComputerChoice(){
             return "scissors";
     }
 };
-/* console.log("Computer threw " + computerChoice) */
+
 
 function playRound(playerChoice){
     let computerChoice = getComputerChoice();
-    /*console.log("You threw " + x)
-    console.log("Computer threw " + y)*/
+  
     if(playerChoice == computerChoice){
         return "Draw";
     } else if ((playerChoice == "rock" && computerChoice == "scissors") || (playerChoice == "paper" && computerChoice == "rock") || (playerChoice == "scissors" && computerChoice == "paper")){
@@ -29,38 +28,36 @@ function playRound(playerChoice){
         return "You lose";
     };
 };
-/*
-function game(){
-    for(let i = 1; i <= 5; i ++){
-        let z = 1
-        do {
-            if(z > 1){
-                playerChoice = prompt("Error: Please type either rock, paper, or scissors")
-            } else {
-                playerChoice = prompt("Rock Paper Scissors")
-            }
-            z++
-        }while (playerChoice.toLowerCase() != "rock" && playerChoice.toLowerCase() != "paper" && playerChoice.toLowerCase() != "scissors")
-        computerChoice = getComputerChoice()
-        console.log(playRound(playerChoice.toLowerCase(), computerChoice.toLowerCase()))
-    }
-}
-*/
+
+let result = "";
 function playRock(){
-    console.log(playRound("rock"));
+    result = playRound("rock");
+    console.log(result);
+    addResults(result);
 }
 
 function playPaper(){
-    console.log(playRound("paper"));
+    result = playRound("paper");
+    console.log(result);
+    addResults(result);
 }
 
 function playScissors(){
-    console.log(playRound("scissors"));
+    result = playRound("scissors");
+    console.log(result);
+    addResults(result);
 }
+
+function addResults(result){
+    let newResult = document.createElement('p');
+    newResult.innerText = result;
+    results.appendChild(newResult);
+};
 
 const rockBtn = document.querySelector('.rock');
 const paperBtn = document.querySelector('.paper');
 const scissorsBtn = document.querySelector('.scissors');
+const results = document.querySelector('.results');
 
 rockBtn.addEventListener('click', playRock);
 paperBtn.addEventListener('click', playPaper);
