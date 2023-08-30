@@ -1,36 +1,35 @@
 
 function randomInt(){
     return Math.floor(Math.random() * 3)
-}
+};
 
 function getComputerChoice(){
     switch(randomInt()){
         case 0:
-            return "Rock"
-            break
+            return "rock";
+            break;
         case 1:
-            return "Paper"
-            break
+            return "paper";
+            break;
         case 2:
-            return "Scissors"
+            return "scissors";
     }
-}
-let computerChoice = getComputerChoice()
-let playerChoice = "rock"
+};
 /* console.log("Computer threw " + computerChoice) */
 
-function playRound(x, y){
+function playRound(playerChoice){
+    let computerChoice = getComputerChoice();
     /*console.log("You threw " + x)
     console.log("Computer threw " + y)*/
-    if(x == y){
-        return "Draw"
-    } else if ((x == "rock" && y == "scissors") || (x == "paper" && y == "rock") || (x == "scissors" && y == "paper")){
-        return "You Win!"
+    if(playerChoice == computerChoice){
+        return "Draw";
+    } else if ((playerChoice == "rock" && computerChoice == "scissors") || (playerChoice == "paper" && computerChoice == "rock") || (playerChoice == "scissors" && computerChoice == "paper")){
+        return "You Win!";
     } else {
-        return "You lose"
-    }
-}
-
+        return "You lose";
+    };
+};
+/*
 function game(){
     for(let i = 1; i <= 5; i ++){
         let z = 1
@@ -46,4 +45,24 @@ function game(){
         console.log(playRound(playerChoice.toLowerCase(), computerChoice.toLowerCase()))
     }
 }
-game()
+*/
+function playRock(){
+    console.log(playRound("rock"));
+}
+
+function playPaper(){
+    console.log(playRound("paper"));
+}
+
+function playScissors(){
+    console.log(playRound("scissors"));
+}
+
+const rockBtn = document.querySelector('.rock');
+const paperBtn = document.querySelector('.paper');
+const scissorsBtn = document.querySelector('.scissors');
+
+rockBtn.addEventListener('click', playRock);
+paperBtn.addEventListener('click', playPaper);
+scissorsBtn.addEventListener('click', playScissors);
+
